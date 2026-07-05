@@ -103,7 +103,7 @@ const PROJECTS = {
         title: 'Strøm Website', cat: 'javascript',
         stack: ['JavaScript', 'HTML', 'CSS', 'Spline'],
         learned: ['Working with a client', 'Spline integration'],
-        description: "A simple website I made for a local band called Strøm as one of my projects in the Multimedia Design course. I tried to add a little bit of fun to it while keeping it simple and informative. My work with the band wasn't limited to the website — I also worked on their social media, helped out with some editing and created posters and flyers for their concerts.",
+        description: "A simple website I made for a local band called Strøm as one of my projects in the Multimedia Design course. I tried to add a little bit of fun to it while keeping it simple and informative. My work with the band wasn't limited to the website - I also worked on their social media, helped out with some editing and created posters and flyers for their concerts, as well as organized some of their concerts myself :)",
         media: [
             { type: 'image', src: 'assets/images/strom1.png' },
             { type: 'image', src: 'assets/images/strom2.png' },
@@ -184,7 +184,7 @@ const PROJECTS = {
         title: 'Chair', cat: 'blender',
         stack: ['Blender'],
         learned: ['Hard-surface modelling', 'UV unwrapping'],
-        description: 'A modelled and rendered chair studying different modelling techniques and textures.',
+        description: 'A modelled and rendered chair that helped me study different modelling techniques and textures.',
         media: [{ type: 'image', src: 'assets/images/chair.png' }],
     },
     head: {
