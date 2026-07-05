@@ -88,9 +88,9 @@ const PROJECT_ORDER = [
 const PROJECTS = {
     weather: {
         title: 'Weather App', cat: 'javascript',
-        stack: ['React', 'HTML Canvas', 'API'],
-        learned: ['Public APIs', 'Dynamic UI', 'Pixel art'],
-        description: 'A weather app that fetches live data and renders a pixel scene where the character and environment change based on current conditions.',
+        stack: ['React', 'CSS', 'API'],
+        learned: ['Working with public APIs', 'Dynamic UI updates'],
+        description: "A simple little weather app that fetches data from a public API and displays the current weather for a searched location. In the little scene the weather conditions and the character's outfit change based on the fetched data. The UI leaves a lot to be desired but my main goal was to just have some fun with APIs and dynamic data in React, as well as dip my toes in pixel art.",
         media: [
             { type: 'image', src: 'assets/images/weather1.png' },
             { type: 'image', src: 'assets/images/weather2.png' },
@@ -102,8 +102,8 @@ const PROJECTS = {
     strom: {
         title: 'Strøm Website', cat: 'javascript',
         stack: ['JavaScript', 'HTML', 'CSS', 'Spline'],
-        learned: ['Client work', 'Spline 3D integration', 'Social media'],
-        description: 'A website for a local band Strøm built during my Multimedia Design course. Includes Spline 3D integration. I also handled social media, editing, and concert posters for the band.',
+        learned: ['Working with a client', 'Spline integration'],
+        description: "A simple website I made for a local band called Strøm as one of my projects in the Multimedia Design course. I tried to add a little bit of fun to it while keeping it simple and informative. My work with the band wasn't limited to the website — I also worked on their social media, helped out with some editing and created posters and flyers for their concerts.",
         media: [
             { type: 'image', src: 'assets/images/strom1.png' },
             { type: 'image', src: 'assets/images/strom2.png' },
@@ -137,8 +137,8 @@ const PROJECTS = {
     suwmania: {
         title: 'Suwmania', cat: 'javascript',
         stack: ['JavaScript', 'HTML', 'CSS', 'PHP'],
-        learned: ['DOM manipulation', 'Game loops', 'Async programming'],
-        description: 'My first JS project — a recreation of a sliding tiles puzzle I used to play with as a kid. Features a move counter and high score tracker.',
+        learned: ['DOM manipulation', 'Game loops', 'Asynchronous programming'],
+        description: "As my first JS project, I recreated a little puzzle toy I used to play with as a kid. It's a simple sliding tiles game with a move counter and a high score tracker. This was a super fun project to learn JavaScript with.",
         media: [{ type: 'image', src: 'assets/images/suwmania.png' }],
         webLink: 'https://host914956.xce.pl/basia/suwmania/B/',
         ghLink: 'https://github.com/basaiszafraniec/suwmaniaB',
