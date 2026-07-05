@@ -81,7 +81,9 @@
         /* ── Page wrapper ───────────────────── */
         .page-wrapper {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
             padding: 72px 20px 60px;
         }
 
@@ -302,27 +304,50 @@
             color: var(--muted);
         }
 
-        /* ── Page 2 overrides ───────────────── */
+        /* ── Page 2 ─────────────────────────── */
         .cv-page-2 {
             break-before: page;
-            margin-top: 20px; /* screen gap between pages */
+            flex-direction: column;
         }
 
-        .sidebar-p2 {
-            justify-content: flex-start !important;
-            gap: 0 !important;
+        /* Small pink name card — top left */
+        .p2-card {
+            display: inline-flex;
+            flex-direction: column;
+            background: var(--pink-light);
+            border-left: 3.5mm solid var(--pink);
+            padding: 7mm 10mm 7mm 10mm;
+            margin: 14mm 0 0 14mm;
         }
 
-        .cv-main-p2 {
-            justify-content: flex-start !important;
-            gap: 0 !important;
+        .p2-card-name {
+            font-size: 14pt;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text);
         }
 
-        .cv-main-p2 .edu-item {
+        .p2-card-name .comma { color: var(--pink); }
+
+        .p2-card-sub {
+            font-size: 7.5pt;
+            font-weight: 300;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-top: 1.5mm;
+        }
+
+        /* Work experience content */
+        .p2-body {
+            padding: 9mm 14mm 14mm 14mm;
+        }
+
+        .p2-body .edu-item {
             margin-bottom: 8mm;
         }
 
-        .cv-main-p2 .edu-item:last-child {
+        .p2-body .edu-item:last-child {
             margin-bottom: 0;
         }
 
@@ -330,9 +355,8 @@
         @media print {
             .print-bar { display: none !important; }
             body { background: white; }
-            .page-wrapper { padding: 0; flex-direction: column; }
+            .page-wrapper { padding: 0; gap: 0; }
             .cv-page { box-shadow: none; }
-            .cv-page-2 { margin-top: 0; }
             @page { size: A4; margin: 0; }
         }
     </style>
@@ -500,16 +524,14 @@
         <!-- ── Page 2: Work Experience ────── -->
         <div class="cv-page cv-page-2">
 
-            <!-- Sidebar -->
-            <div class="sidebar sidebar-p2">
-                <div>
-                    <div class="cv-name" style="font-size:15pt">Basia Szafraniec<span class="comma">,</span></div>
-                    <div class="cv-role" style="margin-top:2mm">Work Experience</div>
-                </div>
+            <!-- Small pink name card, top left -->
+            <div class="p2-card">
+                <div class="p2-card-name">Basia Szafraniec<span class="comma">,</span></div>
+                <div class="p2-card-sub">Work Experience</div>
             </div>
 
-            <!-- Main -->
-            <div class="cv-main cv-main-p2">
+            <!-- Work experience entries -->
+            <div class="p2-body">
                 <div class="m-label">Work Experience</div>
                 <div class="m-rule"></div>
 
@@ -518,7 +540,7 @@
                     <div class="edu-right">
                         <div class="edu-school">Cleaning Assistant</div>
                         <span class="edu-field">BioClean — Aarhus</span>
-                        <p class="edu-desc">Responsible for maintaining an office environment for an insurance company. Also involved in training new team members. The role requires clear communication within the team and strong day-to-day time management.</p>
+                        <p class="edu-desc">Responsible for maintaining an office environment for an insurance company, including training new team members. The role requires clear team communication and strong day-to-day time management.</p>
                     </div>
                 </div>
 
@@ -527,7 +549,7 @@
                     <div class="edu-right">
                         <div class="edu-school">Field Surveyor</div>
                         <span class="edu-field">Market Research World Anna Sojka — Gdańsk</span>
-                        <p class="edu-desc">Conducted door-to-door surveys for city-issued research projects. The role demanded a professional yet approachable manner — being open, non-judgmental and easy to talk to. Built resilience and patience through sustained face-to-face interaction with the public.</p>
+                        <p class="edu-desc">Conducted door-to-door surveys for city-issued research projects. The role demanded a professional yet approachable manner — open, non-judgmental and easy to talk to. Built resilience and patience through sustained face-to-face interaction with the public.</p>
                     </div>
                 </div>
 
@@ -536,7 +558,7 @@
                     <div class="edu-right">
                         <div class="edu-school">Event Staff Member</div>
                         <span class="edu-field">M&T Group Large Scale Events — Poznań</span>
-                        <p class="edu-desc">Helped maintain order and coordination during large-scale public events including concerts and sports fixtures. Developed the ability to stay focused and effective under significant time pressure and adapt quickly to fast-moving situations.</p>
+                        <p class="edu-desc">Maintained order and coordination during large-scale events including concerts and sports fixtures. Developed the ability to stay focused and effective under significant time pressure and adapt quickly to fast-moving situations.</p>
                     </div>
                 </div>
 
@@ -545,7 +567,7 @@
                     <div class="edu-right">
                         <div class="edu-school">Waitress</div>
                         <span class="edu-field">Weranda Restaurant at Impresja Hotel — Gdańsk</span>
-                        <p class="edu-desc">Worked across breakfast service and solo evening shifts in a hotel restaurant, and helped onboard new staff members. The role offered broad interpersonal experience — from building rapport with international guests to handling high-pressure situations with professionalism and care.</p>
+                        <p class="edu-desc">Worked breakfast service and solo evening shifts in a hotel restaurant, and helped onboard new staff. The role gave me broad interpersonal experience — building rapport with international guests and handling high-pressure situations with professionalism and care.</p>
                     </div>
                 </div>
 
@@ -554,11 +576,11 @@
                     <div class="edu-right">
                         <div class="edu-school">Event Staff Member</div>
                         <span class="edu-field">PamEvents — Gdańsk</span>
-                        <p class="edu-desc">Helped plan, organise and execute events catering primarily to children. As my responsibilities grew, I developed strong organisational skills alongside valuable experience in team collaboration and active listening as key tools for effective communication in large projects.</p>
+                        <p class="edu-desc">Helped plan, organise and run events catering primarily to children. As my responsibilities grew, I developed strong organisational skills and valuable experience in team collaboration and active listening.</p>
                     </div>
                 </div>
 
-            </div><!-- /cv-main-p2 -->
+            </div><!-- /p2-body -->
         </div><!-- /cv-page p2 -->
 
     </div><!-- /page-wrapper -->
