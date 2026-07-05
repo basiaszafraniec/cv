@@ -103,7 +103,8 @@
             padding: 14mm 11mm 14mm 14mm;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* spreads 3 groups across full height */
+            justify-content:baseline;
+            gap: 10mm;
             position: relative;
         }
 
@@ -205,7 +206,8 @@
             padding: 14mm 13mm 14mm 11mm;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* spreads 3 sections across full height */
+            justify-content: baseline;
+            gap: 10mm;
         }
 
         /* Section headings */
@@ -281,6 +283,7 @@
             text-transform: uppercase;
             color: var(--light);
             margin-bottom: 3mm;
+            margin-top: 10mm;
         }
 
         .skills-subhead + .skills-subhead { margin-top: 5mm; }
@@ -299,12 +302,37 @@
             color: var(--muted);
         }
 
+        /* ── Page 2 overrides ───────────────── */
+        .cv-page-2 {
+            break-before: page;
+            margin-top: 20px; /* screen gap between pages */
+        }
+
+        .sidebar-p2 {
+            justify-content: flex-start !important;
+            gap: 0 !important;
+        }
+
+        .cv-main-p2 {
+            justify-content: flex-start !important;
+            gap: 0 !important;
+        }
+
+        .cv-main-p2 .edu-item {
+            margin-bottom: 8mm;
+        }
+
+        .cv-main-p2 .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
         /* ── Print overrides ────────────────── */
         @media print {
             .print-bar { display: none !important; }
             body { background: white; }
-            .page-wrapper { padding: 0; }
+            .page-wrapper { padding: 0; flex-direction: column; }
             .cv-page { box-shadow: none; }
+            .cv-page-2 { margin-top: 0; }
             @page { size: A4; margin: 0; }
         }
     </style>
@@ -467,7 +495,72 @@
                 </div>
 
             </div><!-- /cv-main -->
-        </div><!-- /cv-page -->
+        </div><!-- /cv-page p1 -->
+
+        <!-- ── Page 2: Work Experience ────── -->
+        <div class="cv-page cv-page-2">
+
+            <!-- Sidebar -->
+            <div class="sidebar sidebar-p2">
+                <div>
+                    <div class="cv-name" style="font-size:15pt">Basia Szafraniec<span class="comma">,</span></div>
+                    <div class="cv-role" style="margin-top:2mm">Work Experience</div>
+                </div>
+            </div>
+
+            <!-- Main -->
+            <div class="cv-main cv-main-p2">
+                <div class="m-label">Work Experience</div>
+                <div class="m-rule"></div>
+
+                <div class="edu-item">
+                    <span class="edu-year">2023 – Present</span>
+                    <div class="edu-right">
+                        <div class="edu-school">Cleaning Assistant</div>
+                        <span class="edu-field">BioClean — Aarhus</span>
+                        <p class="edu-desc">Responsible for maintaining an office environment for an insurance company. Also involved in training new team members. The role requires clear communication within the team and strong day-to-day time management.</p>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <span class="edu-year">2023</span>
+                    <div class="edu-right">
+                        <div class="edu-school">Field Surveyor</div>
+                        <span class="edu-field">Market Research World Anna Sojka — Gdańsk</span>
+                        <p class="edu-desc">Conducted door-to-door surveys for city-issued research projects. The role demanded a professional yet approachable manner — being open, non-judgmental and easy to talk to. Built resilience and patience through sustained face-to-face interaction with the public.</p>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <span class="edu-year">2022 – 2023</span>
+                    <div class="edu-right">
+                        <div class="edu-school">Event Staff Member</div>
+                        <span class="edu-field">M&T Group Large Scale Events — Poznań</span>
+                        <p class="edu-desc">Helped maintain order and coordination during large-scale public events including concerts and sports fixtures. Developed the ability to stay focused and effective under significant time pressure and adapt quickly to fast-moving situations.</p>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <span class="edu-year">2021</span>
+                    <div class="edu-right">
+                        <div class="edu-school">Waitress</div>
+                        <span class="edu-field">Weranda Restaurant at Impresja Hotel — Gdańsk</span>
+                        <p class="edu-desc">Worked across breakfast service and solo evening shifts in a hotel restaurant, and helped onboard new staff members. The role offered broad interpersonal experience — from building rapport with international guests to handling high-pressure situations with professionalism and care.</p>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <span class="edu-year">2019 – 2020</span>
+                    <div class="edu-right">
+                        <div class="edu-school">Event Staff Member</div>
+                        <span class="edu-field">PamEvents — Gdańsk</span>
+                        <p class="edu-desc">Helped plan, organise and execute events catering primarily to children. As my responsibilities grew, I developed strong organisational skills alongside valuable experience in team collaboration and active listening as key tools for effective communication in large projects.</p>
+                    </div>
+                </div>
+
+            </div><!-- /cv-main-p2 -->
+        </div><!-- /cv-page p2 -->
+
     </div><!-- /page-wrapper -->
 
 </body>
