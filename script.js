@@ -1,3 +1,94 @@
+// ── Holographic blob background ───────────
+(() => {
+    const canvas = document.getElementById('bubble-bg');
+    if (!canvas || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ctx = canvas.getContext('2d');
+    let w, h;
+
+    function resize() {
+        // Render at low resolution — the CSS blur hides it and it's much cheaper
+        w = Math.ceil(window.innerWidth / 3);
+        h = Math.ceil(window.innerHeight / 3);
+        canvas.width  = w;
+        canvas.height = h;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Each blob is iridescent: two tints that swirl inside it (like the reference bubble)
+    // Kept small & scattered so plenty of white stays visible between them
+    const BLOBS = [
+        { tintA: [244, 168, 232], tintB: [147, 197, 253], r: 0.22, cx: 0.14, cy: 0.22, dx: 0.10, dy: 0.14, sx: 0.00050, sy: 0.00038, a: 0.75 }, // pink→blue
+        { tintA: [167, 139, 250], tintB: [153, 246, 228], r: 0.18, cx: 0.85, cy: 0.18, dx: 0.09, dy: 0.12, sx: 0.00042, sy: 0.00055, a: 0.65 }, // lavender→mint
+        { tintA: [147, 197, 253], tintB: [249, 168, 212], r: 0.24, cx: 0.75, cy: 0.78, dx: 0.12, dy: 0.10, sx: 0.00047, sy: 0.00035, a: 0.70 }, // blue→rose
+        { tintA: [217, 70, 239],  tintB: [253, 230, 138], r: 0.15, cx: 0.30, cy: 0.72, dx: 0.11, dy: 0.13, sx: 0.00058, sy: 0.00044, a: 0.50 }, // brand pink→warm yellow
+        { tintA: [253, 224, 71],  tintB: [244, 168, 232], r: 0.13, cx: 0.55, cy: 0.40, dx: 0.14, dy: 0.11, sx: 0.00040, sy: 0.00060, a: 0.45 }, // warm yellow→pink
+    ];
+
+    BLOBS.forEach(b => {
+        b.px = Math.random() * Math.PI * 2;
+        b.py = Math.random() * Math.PI * 2;
+        b.pm = Math.random() * Math.PI * 2; // morph phase
+        b.ps = Math.random() * Math.PI * 2; // swirl phase
+    });
+
+    function frame(now) {
+        ctx.clearRect(0, 0, w, h);
+
+        BLOBS.forEach(b => {
+            const x = (b.cx + Math.sin(now * b.sx + b.px) * b.dx) * w;
+            const y = (b.cy + Math.cos(now * b.sy + b.py) * b.dy) * h;
+
+            // Radius breathes ±18% — the blob feels alive
+            const breathe = 1 + Math.sin(now * 0.0007 + b.pm) * 0.18;
+            const R = b.r * Math.max(w, h) * breathe;
+
+            // Squash into a slowly rotating ellipse — organic, not a perfect circle
+            const angle  = now * 0.00025 + b.pm;
+            const squash = 0.75 + Math.sin(now * 0.0005 + b.ps) * 0.12;
+
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.scale(1, squash);
+
+            const [r1, g1, b1] = b.tintA;
+            const [r2, g2, b2] = b.tintB;
+
+            // Swirling interior: the second tint orbits inside the blob
+            const ox = Math.cos(now * 0.0006 + b.ps) * R * 0.45;
+            const oy = Math.sin(now * 0.0006 + b.ps) * R * 0.45;
+
+            // Base color
+            const base = ctx.createRadialGradient(0, 0, 0, 0, 0, R);
+            base.addColorStop(0,    `rgba(${r1},${g1},${b1},${b.a})`);
+            base.addColorStop(0.65, `rgba(${r1},${g1},${b1},${b.a * 0.4})`);
+            base.addColorStop(1,    `rgba(${r1},${g1},${b1},0)`);
+            ctx.fillStyle = base;
+            ctx.beginPath();
+            ctx.arc(0, 0, R, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Second tint swirling inside (iridescence)
+            const swirl = ctx.createRadialGradient(ox, oy, 0, ox, oy, R * 0.8);
+            swirl.addColorStop(0,   `rgba(${r2},${g2},${b2},${b.a * 0.8})`);
+            swirl.addColorStop(0.6, `rgba(${r2},${g2},${b2},${b.a * 0.25})`);
+            swirl.addColorStop(1,   `rgba(${r2},${g2},${b2},0)`);
+            ctx.fillStyle = swirl;
+            ctx.beginPath();
+            ctx.arc(0, 0, R, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        });
+
+        requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+})();
+
 // ── Nav ───────────────────────────────────
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
