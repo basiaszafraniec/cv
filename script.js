@@ -31,14 +31,42 @@
         b.py = Math.random() * Math.PI * 2;
         b.pm = Math.random() * Math.PI * 2; // morph phase
         b.ps = Math.random() * Math.PI * 2; // swirl phase
+        b.fx = 0; b.fy = 0;                 // cursor-repulsion offset (eased)
     });
+
+    // Track cursor in canvas coordinates (canvas renders at 1/3 resolution)
+    const mouse = { x: -9999, y: -9999 };
+    window.addEventListener('pointermove', e => {
+        mouse.x = e.clientX / 3;
+        mouse.y = e.clientY / 3;
+    }, { passive: true });
+    window.addEventListener('pointerleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+    const REPEL_RADIUS   = () => Math.min(w, h) * 0.55; // how close the cursor must be
+    const REPEL_STRENGTH = () => Math.min(w, h) * 0.28; // how far blobs flee
 
     function frame(now) {
         ctx.clearRect(0, 0, w, h);
 
         BLOBS.forEach(b => {
-            const x = (b.cx + Math.sin(now * b.sx + b.px) * b.dx) * w;
-            const y = (b.cy + Math.cos(now * b.sy + b.py) * b.dy) * h;
+            const baseX = (b.cx + Math.sin(now * b.sx + b.px) * b.dx) * w;
+            const baseY = (b.cy + Math.cos(now * b.sy + b.py) * b.dy) * h;
+
+            // ── Cursor repulsion: blobs shy away, then drift back ──
+            const mdx = baseX - mouse.x;
+            const mdy = baseY - mouse.y;
+            const dist = Math.hypot(mdx, mdy) || 1;
+            const influence = Math.max(0, 1 - dist / REPEL_RADIUS());
+            // ease-out curve so the push is gentle at the edge, stronger up close
+            const push = influence * influence * REPEL_STRENGTH();
+            const tx = (mdx / dist) * push;
+            const ty = (mdy / dist) * push;
+            // soft spring toward target offset — glide away, lazily drift home
+            b.fx += (tx - b.fx) * 0.045;
+            b.fy += (ty - b.fy) * 0.045;
+
+            const x = baseX + b.fx;
+            const y = baseY + b.fy;
 
             // Radius breathes ±18% — the blob feels alive
             const breathe = 1 + Math.sin(now * 0.0007 + b.pm) * 0.18;
