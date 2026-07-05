@@ -69,9 +69,24 @@ if (ytBtn && ytWrap) {
 const CAT_COLORS = { javascript:'#a5e0ff', python:'#b8f0b8', blender:'#f891e9', figma:'#fff3a0' };
 const CAT_LABELS = { javascript:'JavaScript', python:'Python', blender:'Blender', figma:'Figma' };
 
-const PROJECTS = [
-    {
-        id: 'weather', title: 'Weather App', cat: 'javascript',
+// ── Change this list to reorder projects ──
+const PROJECT_ORDER = [
+    'weather',
+    'strom',
+    'raccoony',
+    'suwmania',
+    'inkly',
+    'starsGame',
+    'cube',
+    'osPortfolio',
+    'donut',
+    'chair',
+    'head',
+];
+
+const PROJECTS = {
+    weather: {
+        title: 'Weather App', cat: 'javascript',
         stack: ['React', 'HTML Canvas', 'API'],
         learned: ['Public APIs', 'Dynamic UI', 'Pixel art'],
         description: 'A weather app that fetches live data and renders a pixel scene where the character and environment change based on current conditions.',
@@ -83,8 +98,8 @@ const PROJECTS = [
         webLink: 'https://basiaszafraniec.github.io/weather-app/',
         ghLink:  'https://github.com/basiaszafraniec/weather-app',
     },
-    {
-        id: 'strom', title: 'Strøm Website', cat: 'javascript',
+    strom: {
+        title: 'Strøm Website', cat: 'javascript',
         stack: ['JavaScript', 'HTML', 'CSS', 'Spline'],
         learned: ['Client work', 'Spline 3D integration', 'Social media'],
         description: 'A website for a local band Strøm built during my Multimedia Design course. Includes Spline 3D integration. I also handled social media, editing, and concert posters for the band.',
@@ -103,8 +118,8 @@ const PROJECTS = [
         ],
         ghLink: 'https://github.com/basiaszafraniec/strom-band',
     },
-    {
-        id: 'raccoony', title: 'Raccoony', cat: 'javascript',
+    raccoony: {
+        title: 'Raccoony', cat: 'javascript',
         stack: ['React', 'Leaflet Maps', 'Firebase', 'API'],
         learned: ['Mobile-first design', 'Map implementation', 'Firebase'],
         description: 'An app made as part of my Multimedia Design course. Designed to help find nearest spots for dumpster diving, using a real database of locations and Leaflet maps. Uses Firebase for user posts and profiles.',
@@ -118,8 +133,8 @@ const PROJECTS = [
         webLink: 'https://basiaszafraniec.github.io/raccoony/',
         ghLink:  'https://github.com/basiaszafraniec/raccoony',
     },
-    {
-        id: 'suwmania', title: 'Suwmania', cat: 'javascript',
+    suwmania: {
+        title: 'Suwmania', cat: 'javascript',
         stack: ['JavaScript', 'HTML', 'CSS', 'PHP'],
         learned: ['DOM manipulation', 'Game loops', 'Async programming'],
         description: 'My first JS project — a recreation of a sliding tiles puzzle I used to play with as a kid. Features a move counter and high score tracker.',
@@ -127,8 +142,8 @@ const PROJECTS = [
         webLink: 'https://host914956.xce.pl/basia/suwmania/B/',
         ghLink:  'https://github.com/basaiszafraniec/suwmaniaB',
     },
-    {
-        id: 'inkly', title: 'Inkly', cat: 'figma',
+    inkly: {
+        title: 'Inkly', cat: 'figma',
         stack: ['Figma'],
         learned: ['UI design', 'Component systems', 'Prototyping'],
         description: 'A Figma prototype made during my Multimedia Design course — an app for finding tattoo artists, booking appointments, and building a community around tattoos.',
@@ -141,53 +156,53 @@ const PROJECTS = [
         ],
         webLink: 'https://www.figma.com/proto/8gGwYDcJl15IFezikTh2Qq/WebApp-project?node-id=230-989&p=f&t=PeFspIWgSgTb1cnm-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=320%3A4420&show-proto-sidebar=1',
     },
-    {
-        id: 'starsGame', title: 'Pygame Space Game', cat: 'python',
+    starsGame: {
+        title: 'Pygame Space Game', cat: 'python',
         stack: ['Python', 'Pygame'],
         learned: ['Game loop', 'Collision detection', 'Sprite management'],
         description: 'A small Pygame game exploring 2D game development — ships, bullets, enemies, and collision mechanics.',
         media: [{ type:'video', src:'assets/images/stars-vid.mov' }],
         ghLink: 'https://github.com/basiaszafraniec/stars_game2',
     },
-    {
-        id: 'cube', title: '3D Cube Simulator', cat: 'python',
+    cube: {
+        title: '3D Cube Simulator', cat: 'python',
         stack: ['Python', 'Pygame'],
         learned: ['3D projection math', 'Linear algebra', '2D rendering'],
         description: 'A fun experiment figuring out how to project 3D coordinates onto a 2D screen — a rotating wireframe cube built from scratch without any 3D library.',
         media: [{ type:'video', src:'assets/images/cube-vid.mov' }],
         ghLink: 'https://github.com/basiaszafraniec/cube_simulator',
     },
-    {
-        id: 'donut', title: 'Donut', cat: 'blender',
+    donut: {
+        title: 'Donut', cat: 'blender',
         stack: ['Blender'],
         learned: ['Modelling basics', 'Materials', 'Lighting'],
         description: 'The classic Blender beginner donut — my entry point into 3D modelling and rendering.',
         media: [{ type:'image', src:'assets/images/donut.GIF' }],
     },
-    {
-        id: 'chair', title: 'Chair', cat: 'blender',
+    chair: {
+        title: 'Chair', cat: 'blender',
         stack: ['Blender'],
         learned: ['Hard-surface modelling', 'UV unwrapping'],
         description: 'A modelled and rendered chair studying different modelling techniques and textures.',
         media: [{ type:'image', src:'assets/images/chair.png' }],
     },
-    {
-        id: 'head', title: 'Rotating Head', cat: 'blender',
+    head: {
+        title: 'Rotating Head', cat: 'blender',
         stack: ['Blender'],
         learned: ['3D scanning'],
         description: 'Just a fun animation from a 3D scan of my mum\'s head, rendered in Blender.',
         media: [{ type:'image', src:'assets/images/head.gif' }],
     },
-    {
-        id: 'osPortfolio', title: 'OS Portfolio', cat: 'javascript',
+    osPortfolio: {
+        title: 'OS-like personal website', cat: 'javascript',
         stack: ['React', 'Vite', 'CSS Modules'],
         learned: ['Window management', 'Draggable UI', 'Canvas API', 'Audio API'],
-        description: 'A personal portfolio disguised as a desktop OS — draggable windows, a pixel art cat that meows when clicked, a doodle board, a floating audio player, and a file system for navigating projects and documents.',
-        media: [], // add screenshots as os-portfolio1.png, os-portfolio2.png etc.
+        description: 'A little personal website I made to have some fun with an OS-like design. I love retro operating systems and I wanted to try my hand at making my own little file system and window management system. I originaly intended for it to serve as my portfolio, but I ended up adding too many funky features in the process, so I desided to keep it as a side project instead. It\'s still a work in progress, as it serves me as a little playground to test out new ideas.',
+        media: [{ type:'image', src:'assets/images/web-os.png' }],
         webLink: 'https://basiaszafraniec.github.io/funk/',
         ghLink: 'https://github.com/basiaszafraniec/funk',
     },
-];
+};
 
 // ── Render one carousel slide ─────────────
 function renderSlide(item) {
@@ -305,7 +320,9 @@ function buildCarousel(container, media, catLabel, catColor, ctaLink) {
 // ── Render grid cards ─────────────────────
 const grid = document.getElementById('pf-grid');
 
-PROJECTS.forEach(p => {
+PROJECT_ORDER.forEach(id => {
+    const p = { id, ...PROJECTS[id] };
+    if (!p.title) return; // skip unknown ids
     const color = CAT_COLORS[p.cat] || '#ddd';
     const label = CAT_LABELS[p.cat] || p.cat;
     const first = p.media[0];
