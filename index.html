@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basia Szafraniec — Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-name">Basia Szafraniec</div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#portfolio" class="nav-cta">Portfolio</a></li>
+            <li><a href="cv-download.html" target="_blank" class="nav-cv">↓ CV</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-photo-wrap">
+                <div class="hero-photo">
+                    <img src="assets/images/prof.png" alt="Basia Szafraniec" id="hero-img">
+                    <div class="photo-placeholder" id="photo-placeholder">BS</div>
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>Basia Szafraniec<span class="comma">,</span></h1>
+                <p class="hero-title">Web Developer</p>
+                <div class="hero-links">
+                    <a href="#contact" class="btn-primary">Get in touch</a>
+                    <a href="#portfolio" class="btn-ghost">See some of my projects</a>
+                </div>
+            </div>
+        </div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </section>
+
+    <main>
+
+        <section id="about" class="section reveal">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="section-divider"></div>
+            <p class="about-text">
+                Hi! I'm Basia, a very curious and positive person who's always up for learning something new.
+                Whether it's coding, 3D graphics, design, user research or Japanese, I bring energy and a love
+                for collaboration to everything I do. I've taught myself most of the skills I know because I
+                genuinely enjoy the challenge of figuring things out. People and projects both keep me
+                inspired, and I'm always excited to share ideas and create something awesome together!
+            </p>
+        </section>
+
+        <section id="education" class="section reveal">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="section-divider"></div>
+            <div class="edu-list">
+
+                <div class="edu-item">
+                    <div class="edu-meta">
+                        <span class="edu-year">2018 – 2021</span>
+                    </div>
+                    <div class="edu-content">
+                        <h3>Adam Mickiewicz's High School in Gdańsk</h3>
+                        <span class="edu-field">Math-Geography</span>
+                        <p>My High School put a lot of emphasis on <strong>public speaking</strong> and debating, which I feel are the main skills I gained there.</p>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-meta">
+                        <span class="edu-year">2021 – 2023</span>
+                    </div>
+                    <div class="edu-content">
+                        <h3>Mikołaj Kopernik's University in Poznań</h3>
+                        <span class="edu-field">Ethnolinguistics with Japanese</span>
+                        <p>Despite dropping out, I still really value the <strong>cultural knowledge</strong> I took away from this course. The role language plays in shaping culture is something I find genuinely fascinating, and I still come back to ideas I first encountered here.</p>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-meta">
+                        <span class="edu-year">2023 – 2025</span>
+                    </div>
+                    <div class="edu-content">
+                        <h3>Business Academy Aarhus</h3>
+                        <span class="edu-field">Multimedia Design — International Class</span>
+                        <p>On top of many hard skills I really value the <strong>problem-oriented</strong> way of thinking and <strong>user research</strong> skills this program taught me. I also really loved gaining experience working in an <strong>international environment</strong>, and the course's strong emphasis on <strong>intercultural communication</strong> has been something I use every day.</p>
+                        <button class="edu-video-btn" id="yt-toggle" aria-expanded="true">
+                            <span class="edu-video-icon" aria-hidden="true">▶</span>
+                            Application video
+                        </button>
+                        <div class="edu-video-wrap open" id="yt-wrap">
+                            <a href="https://youtu.be/Ew_p2jdA_Yk" target="_blank" rel="noopener" class="yt-thumb-link" aria-label="Watch application video on YouTube">
+                                <img src="https://img.youtube.com/vi/Ew_p2jdA_Yk/hqdefault.jpg" alt="Multimedia Design application video thumbnail" class="yt-thumb-img">
+                                <div class="yt-play-overlay">
+                                    <svg class="yt-play-icon" viewBox="0 0 68 48" width="52" height="37" aria-hidden="true">
+                                        <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74 0 13.05 0 24 0 24s0 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C68 34.95 68 24 68 24s0-10.95-1.48-16.26z" fill="#ff0000"/>
+                                        <path d="M45 24L27 14v20z" fill="#fff"/>
+                                    </svg>
+                                    <span class="yt-play-label">Watch on YouTube ↗</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="section reveal">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Skills</h2>
+            </div>
+            <div class="section-divider"></div>
+            <div class="skills-subheading">Technical</div>
+            <div class="skills-grid">
+                <div class="skill-tag">HTML</div>
+                <div class="skill-tag">CSS</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">React.js</div>
+                <div class="skill-tag">Three.js</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">Figma</div>
+                <div class="skill-tag">Blender</div>
+                <div class="skill-tag">Adobe Package</div>
+                <div class="skill-tag">Office Package</div>
+                <div class="skill-tag">AI Tools</div>
+            </div>
+            <div class="skills-subheading" style="margin-top: 28px">Soft Skills</div>
+            <div class="skills-grid">
+                <div class="skill-tag">Public Speaking</div>
+                <div class="skill-tag">User Research</div>
+                <div class="skill-tag">Problem-Oriented Thinking</div>
+                <div class="skill-tag">Intercultural Communication</div>
+                <div class="skill-tag">Collaboration</div>
+                <div class="skill-tag">Self-Teaching</div>
+                <div class="skill-tag">Debating</div>
+                <div class="skill-tag">Active Listening</div>
+                <div class="skill-tag">Openness</div>
+                <div class="skill-tag">Conflict Resolution</div>
+                <div class="skill-tag">Cross-cultural Communication</div>
+            </div>
+        </section>
+
+        <section id="languages" class="section reveal">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Languages</h2>
+            </div>
+            <div class="section-divider"></div>
+            <div class="lang-list">
+                <div class="lang-item">
+                    <span class="lang-name">English</span>
+                    <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
+                    <span class="lang-level">C2</span>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-name">Polish</span>
+                    <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
+                    <span class="lang-level">Native</span>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-name">Spanish</span>
+                    <div class="lang-bar-wrap"><div class="lang-bar" style="width:40%"></div></div>
+                    <span class="lang-level">B1</span>
+                </div>
+                <div class="lang-item">
+                    <span class="lang-name">Danish</span>
+                    <div class="lang-bar-wrap"><div class="lang-bar" style="width:50%"></div></div>
+                    <span class="lang-level">B1</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section reveal">
+            <div class="section-header">
+                <span class="section-num">05</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            <div class="section-divider"></div>
+            <div class="contact-list">
+                <a href="mailto:basia.szafraniec@gmail.com" class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">basia.szafraniec@gmail.com</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="https://github.com/basiaszafraniec" target="_blank" rel="noopener" class="contact-item">
+                    <span class="contact-label">GitHub</span>
+                    <span class="contact-value">github.com/basiaszafraniec</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="https://linkedin.com/in/barbara-szafraniec-074019289" target="_blank" rel="noopener" class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-value">linkedin.com/in/barbara-szafraniec</span>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section reveal">
+            <div class="pf-inner">
+                <div class="section-header">
+                    <span class="section-num">06</span>
+                    <h2 class="section-title">Portfolio</h2>
+                </div>
+                <div class="section-divider"></div>
+                <div class="pf-filters" id="pf-filters">
+                    <button class="pf-filter active" data-filter="all">All</button>
+                    <button class="pf-filter" data-filter="javascript">JavaScript</button>
+                    <button class="pf-filter" data-filter="python">Python</button>
+                    <button class="pf-filter" data-filter="blender">Blender</button>
+                    <button class="pf-filter" data-filter="figma">Figma</button>
+                </div>
+                <div class="pf-grid" id="pf-grid"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="pf-modal" class="pf-modal" aria-hidden="true">
+        <div class="pf-modal-bg" id="pf-modal-bg"></div>
+        <div class="pf-modal-panel">
+            <button class="pf-modal-close" id="pf-modal-close" aria-label="Close">×</button>
+            <div class="pf-modal-body" id="pf-modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <span>Basia Szafraniec &copy; 2026</span>
+        <a href="#" class="back-to-top">Back to top ↑</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

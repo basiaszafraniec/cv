@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basia Szafraniec — CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset ─────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --pink:       #d946ef;
+            --pink-light: #faf0fe;
+            --text:       #111111;
+            --muted:      #555555;
+            --light:      #999999;
+            --border:     #e8e8e8;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #ede8f0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* ── Screen print-bar ───────────────── */
+        .print-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 52px;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 999;
+            gap: 16px;
+        }
+
+        .print-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .print-bar a {
+            font-size: 0.8rem;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .print-bar a:hover { color: var(--text); }
+
+        .print-note {
+            font-size: 0.72rem;
+            color: #aaa;
+        }
+
+        .btn-download {
+            padding: 9px 22px;
+            background: var(--pink);
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-download:hover { opacity: 0.85; }
+
+        /* ── Page wrapper ───────────────────── */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 72px 20px 60px;
+        }
+
+        /* ── CV page — locked to A4 ─────────── */
+        .cv-page {
+            width: 210mm;
+            height: 297mm;
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            box-shadow: 0 8px 48px rgba(0,0,0,0.14);
+            position: relative;
+        }
+
+        /* ── Left sidebar ───────────────────── */
+        .sidebar {
+            width: 66mm;
+            flex-shrink: 0;
+            background: var(--pink-light);
+            padding: 10mm 10mm 10mm 13mm;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3mm;
+            background: var(--pink);
+        }
+
+        /* Photo */
+        .cv-photo {
+            width: 100%;
+            height: 40mm;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 2mm;
+            display: block;
+            margin-bottom: 5mm;
+        }
+
+        /* Name block */
+        .cv-name {
+            font-size: 15pt;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 1mm;
+        }
+
+        .cv-name .comma { color: var(--pink); }
+
+        .cv-role {
+            font-size: 7.5pt;
+            font-weight: 300;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 6mm;
+        }
+
+        /* Section label */
+        .s-label {
+            font-size: 5.5pt;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--pink);
+            margin-bottom: 1.5mm;
+        }
+
+        .s-rule {
+            height: 0.3mm;
+            background: #e2caf0;
+            margin-bottom: 3.5mm;
+        }
+
+        /* Contact */
+        .contact-block { margin-bottom: 6mm; }
+
+        .contact-item { margin-bottom: 2.5mm; }
+
+        .contact-item-label {
+            font-size: 5pt;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--light);
+            display: block;
+            margin-bottom: 0.4mm;
+        }
+
+        .contact-item-val {
+            font-size: 6.5pt;
+            color: var(--text);
+            word-break: break-all;
+            line-height: 1.4;
+        }
+
+        /* Languages */
+        .lang-block {}
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2mm;
+            padding-bottom: 2mm;
+            border-bottom: 0.3mm solid #e2caf0;
+        }
+
+        .lang-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+        .lang-name { font-size: 7pt; color: var(--text); }
+        .lang-level { font-size: 6pt; color: var(--light); font-weight: 500; }
+
+        /* ── Right main content ─────────────── */
+        .cv-main {
+            flex: 1;
+            padding: 10mm 12mm 10mm 10mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Section headings in main */
+        .m-label {
+            font-size: 5.5pt;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 1.5mm;
+        }
+
+        .m-rule {
+            height: 0.3mm;
+            background: var(--border);
+            margin-bottom: 4mm;
+        }
+
+        /* About */
+        .about-block { margin-bottom: 6mm; }
+
+        .about-text {
+            font-size: 7.5pt;
+            line-height: 1.65;
+            color: var(--muted);
+        }
+
+        /* Education */
+        .edu-block { margin-bottom: 6mm; }
+
+        .edu-item {
+            display: grid;
+            grid-template-columns: 20mm 1fr;
+            gap: 0 3.5mm;
+            margin-bottom: 4.5mm;
+        }
+
+        .edu-item:last-child { margin-bottom: 0; }
+
+        .edu-year {
+            font-size: 6pt;
+            color: var(--light);
+            padding-top: 1mm;
+            line-height: 1.3;
+        }
+
+        .edu-right {
+            border-left: 0.4mm solid var(--border);
+            padding-left: 3.5mm;
+        }
+
+        .edu-school {
+            font-size: 8pt;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.6mm;
+        }
+
+        .edu-field {
+            font-size: 6.5pt;
+            color: var(--pink);
+            display: block;
+            margin-bottom: 1.2mm;
+        }
+
+        .edu-desc {
+            font-size: 6.5pt;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Skills */
+        .skills-block {}
+
+        .skills-subhead {
+            font-size: 5.5pt;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--light);
+            margin-bottom: 2mm;
+        }
+
+        .skills-subhead + .skills-subhead { margin-top: 3.5mm; }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5mm;
+            margin-bottom: 0;
+        }
+
+        .skill-tag {
+            font-size: 6pt;
+            padding: 0.8mm 2.5mm;
+            border: 0.3mm solid var(--border);
+            border-radius: 1mm;
+            color: var(--muted);
+        }
+
+        /* ── Print overrides ────────────────── */
+        @media print {
+            .print-bar { display: none !important; }
+            body { background: white; }
+            .page-wrapper { padding: 0; }
+            .cv-page { box-shadow: none; }
+            @page { size: A4; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Screen toolbar ──────────────────── -->
+    <div class="print-bar">
+        <div class="print-bar-left">
+            <a href="index.html">← Back to site</a>
+            <span class="print-note">To save as PDF: File → Export as PDF (Safari) or Print → Save as PDF (Chrome)</span>
+        </div>
+        <button class="btn-download" onclick="window.print()">Download PDF ↓</button>
+    </div>
+
+    <!-- ── CV page ─────────────────────────── -->
+    <div class="page-wrapper">
+        <div class="cv-page">
+
+            <!-- ── Sidebar ─────────────────── -->
+            <div class="sidebar">
+                <img src="assets/images/prof.png" alt="Basia Szafraniec" class="cv-photo">
+
+                <div class="cv-name">Basia Szafraniec<span class="comma">,</span></div>
+                <div class="cv-role">Web Developer</div>
+
+                <!-- Contact -->
+                <div class="contact-block">
+                    <div class="s-label">Contact</div>
+                    <div class="s-rule"></div>
+
+                    <div class="contact-item">
+                        <span class="contact-item-label">Email</span>
+                        <span class="contact-item-val">basia.szafraniec@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-label">Phone</span>
+                        <span class="contact-item-val">+45 91 44 97 53</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-label">GitHub</span>
+                        <span class="contact-item-val">github.com/basiaszafraniec</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-label">LinkedIn</span>
+                        <span class="contact-item-val">linkedin.com/in/barbara-szafraniec</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-label">Portfolio</span>
+                        <span class="contact-item-val">basiaszafraniec.github.io/portfolio2026</span>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="lang-block">
+                    <div class="s-label">Languages</div>
+                    <div class="s-rule"></div>
+
+                    <div class="lang-item">
+                        <span class="lang-name">English</span>
+                        <span class="lang-level">C2</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Polish</span>
+                        <span class="lang-level">Native</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Spanish</span>
+                        <span class="lang-level">B1</span>
+                    </div>
+                    <div class="lang-item">
+                        <span class="lang-name">Danish</span>
+                        <span class="lang-level">B1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Main content ─────────────── -->
+            <div class="cv-main">
+
+                <!-- About -->
+                <div class="about-block">
+                    <div class="m-label">About Me</div>
+                    <div class="m-rule"></div>
+                    <p class="about-text">
+                        Hi! I'm Basia, a very curious and positive person who's always up for learning something new.
+                        Whether it's coding, 3D graphics, design, user research or Japanese, I bring energy and a love
+                        for collaboration to everything I do. I've taught myself most of the skills I know because I
+                        genuinely enjoy the challenge of figuring things out. People and projects both keep me
+                        inspired, and I'm always excited to share ideas and create something awesome together!
+                    </p>
+                </div>
+
+                <!-- Education -->
+                <div class="edu-block">
+                    <div class="m-label">Education</div>
+                    <div class="m-rule"></div>
+
+                    <div class="edu-item">
+                        <span class="edu-year">2023 – 2025</span>
+                        <div class="edu-right">
+                            <div class="edu-school">Business Academy Aarhus</div>
+                            <span class="edu-field">Multimedia Design — International Class</span>
+                            <p class="edu-desc">Developed strong problem-oriented thinking and user research skills. Gained extensive experience in international collaboration and intercultural communication.</p>
+                        </div>
+                    </div>
+
+                    <div class="edu-item">
+                        <span class="edu-year">2021 – 2023</span>
+                        <div class="edu-right">
+                            <div class="edu-school">Mikołaj Kopernik's University in Poznań</div>
+                            <span class="edu-field">Ethnolinguistics with Japanese</span>
+                            <p class="edu-desc">Built a deep appreciation for the role language plays in shaping culture — ideas I continue to draw on in cross-cultural work environments.</p>
+                        </div>
+                    </div>
+
+                    <div class="edu-item">
+                        <span class="edu-year">2018 – 2021</span>
+                        <div class="edu-right">
+                            <div class="edu-school">Adam Mickiewicz's High School in Gdańsk</div>
+                            <span class="edu-field">Math-Geography</span>
+                            <p class="edu-desc">Strong emphasis on public speaking and debating — foundational communication skills I use in every professional setting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="skills-block">
+                    <div class="m-label">Skills</div>
+                    <div class="m-rule"></div>
+
+                    <div class="skills-subhead">Technical</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Three.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">Adobe Package</span>
+                        <span class="skill-tag">Office Package</span>
+                        <span class="skill-tag">AI Tools</span>
+                    </div>
+
+                    <div class="skills-subhead">Soft Skills</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Public Speaking</span>
+                        <span class="skill-tag">User Research</span>
+                        <span class="skill-tag">Problem-Oriented Thinking</span>
+                        <span class="skill-tag">Intercultural Communication</span>
+                        <span class="skill-tag">Collaboration</span>
+                        <span class="skill-tag">Active Listening</span>
+                        <span class="skill-tag">Openness</span>
+                        <span class="skill-tag">Conflict Resolution</span>
+                        <span class="skill-tag">Self-Teaching</span>
+                        <span class="skill-tag">Debating</span>
+                    </div>
+                </div>
+
+            </div><!-- /cv-main -->
+        </div><!-- /cv-page -->
+    </div><!-- /page-wrapper -->
+
+</body>
+</html>
