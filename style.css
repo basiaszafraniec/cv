@@ -97,10 +97,27 @@ body {
     text-transform: uppercase;
     color: var(--muted);
     transition: color 0.2s;
+    position: relative;
 }
 
-.nav-links a:hover,
-.nav-links a.active { color: var(--text); }
+.nav-links a:hover { color: var(--text); }
+
+.nav-links a.active { color: var(--pink); }
+
+/* underline indicator for the active section */
+.nav-links a:not(.nav-cta):not(.nav-cv)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -6px;
+    height: 2px;
+    background: var(--pink);
+    border-radius: 1px;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a.active:not(.nav-cta):not(.nav-cv)::after { right: 0; }
 
 .nav-links .nav-cta {
     color: #fff;
@@ -118,6 +135,12 @@ body {
     color: #fff;
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(217, 70, 239, 0.4);
+}
+
+/* active state for the Portfolio button: stronger glow instead of pink text */
+.nav-links .nav-cta.active {
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(217, 70, 239, 0.5);
 }
 
 /* Hamburger */
