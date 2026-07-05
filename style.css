@@ -57,7 +57,12 @@ body {
     font-weight: 600;
     letter-spacing: 0.01em;
     white-space: nowrap;
+    text-decoration: none;
+    color: var(--text);
+    transition: color 0.2s;
 }
+
+.nav-name:hover { color: var(--pink); }
 
 .nav-links {
     display: flex;
@@ -1072,6 +1077,27 @@ footer {
 }
 
 .back-to-top:hover { color: var(--pink); }
+
+/* ── Scroll hint ─────────────────────────── */
+.scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--light);
+    opacity: 0.45;
+    z-index: 2;
+    pointer-events: none;
+    animation: scrollBounce 2.2s ease-in-out infinite;
+    transition: opacity 0.7s ease;
+}
+
+.scroll-hint.hidden { opacity: 0; }
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(7px); }
+}
 
 /* ── Scroll reveal ───────────────────────── */
 .reveal {

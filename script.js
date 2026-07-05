@@ -52,6 +52,14 @@ if (heroImg) {
     heroImg.addEventListener('error', () => { heroImg.style.display = 'none'; });
 }
 
+// ── Scroll hint ───────────────────────────
+const scrollHint = document.getElementById('scroll-hint');
+if (scrollHint) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) scrollHint.classList.add('hidden');
+    }, { passive: true });
+}
+
 // ── YouTube application video toggle ─────
 const ytBtn = document.getElementById('yt-toggle');
 const ytWrap = document.getElementById('yt-wrap');
